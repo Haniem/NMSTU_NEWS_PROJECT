@@ -71,5 +71,5 @@ Php8 - https://www.php.net/downloads.php
 # Схема базы данных:
 
 https://app.diagrams.net/?src=about#G1Ytr6WLAFwn2XG05uUKkv2OO3QOQPm3yN#%7B%22pageId%22%3A%22dkBTHd9Ru4eEBB2xRWGK%22%7D
-![alt text](image-4.png)
+![alt text](image-3.png)
 
