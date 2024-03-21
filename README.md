@@ -12,7 +12,6 @@
     1. Node Pocket Manager - https://nodejs.org/.
     2. Git bash - https://gitforwindows.org/.
     3 Любое IDE для редактирования кода, но советую PHPStorm(Из него можно запускать проект и это просто очень хороший помошник для написаня PHP кода).
-    
     4. Приложение для базы данных. В целом не принципиально что вы будете использовать, но я лично пользуюсь Open Server:
         1. Open Server - https://ospanel.io/.
         2. Sql server - https://www.microsoft.com/en-us/sql-server/sql-server-downloads.
