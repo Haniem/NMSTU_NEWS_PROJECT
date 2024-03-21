@@ -17,3 +17,6 @@
 /backend/.fleet
 /backend/.idea
 /backend/.vscode
+/.idea/
+/.idea/workspace.xml
+
