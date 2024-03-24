@@ -16,6 +16,9 @@
         1. Open Server - https://ospanel.io/.
         2. Sql server - https://www.microsoft.com/en-us/sql-server/sql-server-downloads.
 
+        **Примечание**
+        В php.ini(файл в папке с php которую вы устанавливаете далее, нужно убрать ";" в строке ;extencion=pdo_mysql)
+
 Php8 - https://www.php.net/downloads.php
 Для настройки php вам потребуется выполнить эти действия:
     1. скачать архив thread save php последней версии.
