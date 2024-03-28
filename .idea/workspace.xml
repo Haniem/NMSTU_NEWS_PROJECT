@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3845d711-2b8b-4c48-98f4-c2391a16d0b5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image-3.png" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/resources/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/resources/css/register.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/resources/views/auth.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/resources/views/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Guides.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/resources/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,9 +145,9 @@
       <path value="$PROJECT_DIR$/backend/vendor/symfony/mime" />
     </include_path>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2e031RiGp5BgwWnzGYMxO15k8PI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -153,7 +157,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "22__faculties__specialization__users__migrations",
+    "git-widget-placeholder": "auth",
     "last_opened_file_path": "C:/MyFiles/Coding/NMSTU_NEWS_PROJECT/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -190,6 +194,7 @@
       <option name="presentableId" value="Default" />
       <updated>1711027452616</updated>
       <workItem from="1711027453645" duration="1512000" />
+      <workItem from="1711650557002" duration="30000" />
     </task>
     <servers />
   </component>
