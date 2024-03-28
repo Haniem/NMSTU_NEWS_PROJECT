@@ -20,8 +20,8 @@ class AuthController extends Controller
             'name'=>'required|min:2|max:100',
             'surname'=>'required|min:2|max:100',
             'lastname'=>'max:100',
-            'username'=>'bail|required|unique:users',
-            'email'=>'bail|required|unique:users',
+            'username'=>'alpha:ascii|required|unique:users',
+            'email'=>'required|unique:users|',
             'specialization_id'=>'required',
             'position_id'=>'required',
             'password'=>'bail|required',
@@ -34,6 +34,7 @@ class AuthController extends Controller
                 'errors' => $validator->errors()
             ], 422);
         }
+
         $user = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
@@ -50,5 +51,7 @@ class AuthController extends Controller
             'message' => 'Validations fails',
             'data' => $user
         ], 200);
+
+
     }
 }
