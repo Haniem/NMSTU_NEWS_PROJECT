@@ -52,8 +52,7 @@ class AuthController extends Controller
         }
     }
 
-public function register(Request $request)
-    {
+    public function register(Request $request){
         $validator = Validator::make($request->all(), [
             'name'=>'required|min:2|max:100',
             'surname'=>'required|min:2|max:100',
@@ -89,7 +88,12 @@ public function register(Request $request)
             'message' => 'Validations succesfull',
             'data' => $user
         ], 200);
+    }
 
-
+    public function logout(Request $request){
+        $request->user()->currentAccessToken()->delete();
+        return response()->json([
+            'message'=>'User successfully logged out',
+        ],200);
     }
 }
