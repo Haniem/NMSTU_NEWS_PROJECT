@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Posts\PostController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,3 +23,5 @@ Route::post('/auth/register', [AuthController::class, 'register']); // Реги�
 Route::post('/auth/login', [AuthController::class, 'login']); // Проверка данных для фхода и создания токена для доступа к данным пользователя
 Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum'); // Удаления персонального  токена для доступа к данным
 
+Route::get('/posts', [PostController::class, 'getPosts']); // Получить все посты
+Route::post('/posts/create', [PostController::class, 'createPost'])->middleware('auth:sanctum');//Создать пост
