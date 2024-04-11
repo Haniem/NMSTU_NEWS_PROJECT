@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Likes;
 
 use App\Http\Controllers\Controller;
 use App\Models\Like;
-use http\Env\Request;
+use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
