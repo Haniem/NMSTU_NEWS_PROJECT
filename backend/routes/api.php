@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Posts\PostController;
 use App\Http\Controllers\Api\User\UserController;
+use App\Http\Controllers\Api\Comment\ComentController;
+use App\Http\Controllers\Api\Likes\LikeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -34,6 +36,6 @@ Route::get('/profile/userLikedPosts',[UserController::class, 'getUserLikedPosts'
 Route::get('/comments', [ComentController::class, 'getComments']); // Получить все коментарии к конкретному посту
 
 Route::get('/likes', [LikeController::class, 'getPostLikes']); // Получить все лайки на посте
-Route::get('/likes/add', [LikeController::class, 'addPostLikes'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном) 
+Route::get('/likes/add', [LikeController::class, 'addPostLikes'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
 
 Route::get('/comments', [ComentController::class, 'getPostComments']); // Получить все коментарии к конкретному посту

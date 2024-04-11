@@ -21,20 +21,20 @@ class UserController extends Controller
            'message' => $likes
         ]);
     }
-  
+
     public function getProfileData(Request $request)
     {
-        $user = User::find($request->user()->id)->first();
-      
+        $user = User::all()->where($request->user()->id)->first();
+
         return response()->json([
             'message' => 'Data fetch success fully',
             'data' => $user
         ], 200);
     }
-      
+
     public function getUserPosts(Request $request){
-        $posts = Post::find()->where('user_id',$request->user()->id);
-      
+        $posts = Post::all()->where('user_id',$request->user()->id);
+
         return response()->json([
             'message' => 'Data fetch success fully',
             'data' => $posts
