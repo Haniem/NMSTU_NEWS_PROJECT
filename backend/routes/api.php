@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Posts\PostController;
 use App\Http\Controllers\Api\User\UserController;
+use App\Http\Controllers\Api\Comment\CommentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
