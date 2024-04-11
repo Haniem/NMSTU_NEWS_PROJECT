@@ -29,6 +29,7 @@ Route::post('/posts/create', [PostController::class, 'createPost'])->middleware(
 
 Route::get('/profile',[UserController::class, 'getProfileData'])->middleware('auth:sanctum'); //Выдача инфомрации о пользователе (только с токеном)
 Route::get('/profile/userPosts',[UserController::class, 'getUserPosts'])->middleware('auth:sanctum'); //Выдача постов пользователяи (только с токеном)
+Route::get('/profile/userLikedPosts',[UserController::class, 'getUserLikedPosts'])->middleware('auth:sanctum'); //Выдача пролайканных постов (только с токеном)
 
 Route::get('/comments', [ComentController::class, 'getComments']); // Получить все коментарии к конкретному посту
 
