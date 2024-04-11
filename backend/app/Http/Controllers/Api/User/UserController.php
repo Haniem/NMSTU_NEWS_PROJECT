@@ -43,4 +43,4 @@ class UserController extends Controller
             'data' => $user
         ], 200);
     }
-}
+} 

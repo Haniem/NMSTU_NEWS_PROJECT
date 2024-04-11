@@ -26,4 +26,4 @@ Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth
 
 Route::get('/posts', [PostController::class, 'getPosts']); // Получить все посты
 Route::post('/posts/create', [PostController::class, 'createPost'])->middleware('auth:sanctum');//Создать пост
-Route::patch('/profile/edit',[UserController::class, 'updateUserData'])->middleware('auth:sanctum'); // Запись отредактированных данных (только с токеном)
+Route::patch('/profile/edit',[UserController::class, 'updateUserData'])->middleware('auth:sanctum'); // Запись  отредактированных данных (только с токеном)
