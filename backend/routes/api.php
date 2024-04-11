@@ -34,3 +34,5 @@ Route::get('/comments', [ComentController::class, 'getComments']); // Получ
 
 Route::get('/likes', [LikeController::class, 'getPostLikes']); // Получить все лайки на посте
 Route::get('/likes/add', [LikeController::class, 'addPostLikes'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном) 
+
+Route::get('/comments', [ComentController::class, 'getPostComments']); // Получить все коментарии к конкретному посту

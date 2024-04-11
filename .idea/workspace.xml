@@ -154,30 +154,29 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "auth",
-    "last_opened_file_path": "C:/Users/User/NMSTU_NEWS_PROJECT/backend",
+    "last_opened_file_path": "C:/Users/egor2/Desktop/Универ/Мониторинг версионности web-приложений/NMSTU_NEWS_PROJECT/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "PHP"
-    ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\User\NMSTU_NEWS_PROJECT\backend" />
       <recent name="C:\MyFiles\Coding\NMSTU_NEWS_PROJECT\backend" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.Main">
     <configuration name="Main" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner configuration_file="$PROJECT_DIR$/backend/phpunit.xml" scope="XML" use_alternative_configuration_file="true" />
+      <method v="2" />
+    </configuration>
+    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
   </component>
@@ -200,9 +199,6 @@
       <workItem from="1711027453645" duration="1512000" />
       <workItem from="1711650557002" duration="30000" />
       <workItem from="1711685016449" duration="597000" />
-      <workItem from="1712759211059" duration="11323000" />
-      <workItem from="1712773206029" duration="24000" />
-      <workItem from="1712846589055" duration="2363000" />
     </task>
     <servers />
   </component>
