@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Posts\PostController;
+use App\Http\Controllers\Api\User\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,3 +26,4 @@ Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth
 
 Route::get('/posts', [PostController::class, 'getPosts']); // Получить все посты
 Route::post('/posts/create', [PostController::class, 'createPost'])->middleware('auth:sanctum');//Создать пост
+Route::patch('/profile/edit',[UserController::class, 'updateUserData'])->middleware('auth:sanctum'); // Запись отредактированных данных (только с токеном)
