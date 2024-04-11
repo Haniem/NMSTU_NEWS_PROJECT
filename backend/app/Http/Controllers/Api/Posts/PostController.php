@@ -49,10 +49,12 @@ class PostController extends Controller
             'message' => 'Validations succesfull',
             'data' => $post
         ], 200);
-
-
+    }
+    public function getPostData($id)
+    {
+        $post = Post::find($id);
+        return response()->json([
+            'post' => $post
+        ], 200);
     }
 }
-
-
-

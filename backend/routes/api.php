@@ -31,3 +31,5 @@ Route::get('/profile',[UserController::class, 'getProfileData'])->middleware('au
 Route::get('/profile/userPosts',[UserController::class, 'getUserPosts'])->middleware('auth:sanctum'); //Выдача постов пользователяи (только с токеном)
 
 Route::get('/comments', [ComentController::class, 'getComments']); // Получить все коментарии к конкретному посту
+
+Route::get('/posts/{id}', [PostController::class, 'getPostData']);
