@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Posts\PostController;
 use App\Http\Controllers\Api\User\UserController;
+use App\Http\Controllers\Api\Comment\ComentController;
+use App\Http\Controllers\Api\Likes\LikeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,10 +28,14 @@ Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth
 
 Route::get('/posts', [PostController::class, 'getPosts']); // Получить все посты
 Route::post('/posts/create', [PostController::class, 'createPost'])->middleware('auth:sanctum');//Создать пост
+Route::get('/posts/{id}', [PostController::class, 'getPostData']);
 
 Route::get('/profile',[UserController::class, 'getProfileData'])->middleware('auth:sanctum'); //Выдача инфомрации о пользователе (только с токеном)
 Route::get('/profile/userPosts',[UserController::class, 'getUserPosts'])->middleware('auth:sanctum'); //Выдача постов пользователяи (только с токеном)
+Route::get('/profile/userLikedPosts',[UserController::class, 'getUserLikedPosts'])->middleware('auth:sanctum'); //Выдача пролайканных постов (только с токеном)
 
 Route::get('/comments', [ComentController::class, 'getComments']); // Получить все коментарии к конкретному посту
+Route::get('/getComments', [ComentController::class, 'getPostComments']); // Получить все коментарии к конкретному посту
 
-Route::get('/posts/{id}', [PostController::class, 'getPostData']);
+Route::get('/likes', [LikeController::class, 'getPostLikes']); // Получить все лайки на посте
+Route::get('/likes/add', [LikeController::class, 'addPostLikes'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)

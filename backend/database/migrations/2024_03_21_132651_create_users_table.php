@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('discription')->nullable();
 
             $table->foreignId('specialization_id')->constrained('specializations');
-            $table->foreignId('role_id')->constrained('roles')->cascadeOnDelete()->noActionOnUpdate();
+            $table->foreignId('role_id')->constrained('roles')->default('1')->cascadeOnDelete()->noActionOnUpdate();
             $table->foreignId('position_id')->constrained('positions');
 
             $table->string('state')->default('created');

@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Api\Posts;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -27,8 +25,6 @@ class PostController extends Controller
             'post_text' => 'required',
             'type_id' => 'required'
         ]);
-
-
 
         if ($validator->fails()) {
             return response()->json([
