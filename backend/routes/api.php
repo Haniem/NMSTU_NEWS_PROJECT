@@ -26,6 +26,8 @@ Route::post('/auth/register', [AuthController::class, 'register']); // Реги�
 Route::post('/auth/login', [AuthController::class, 'login']); // Проверка данных для фхода и создания токена для доступа к данным пользователя
 Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum'); // Удаления персонального  токена для доступа к данным
 
+Route::patch('/profile/edit',[UserController::class, 'updateUserData'])->middleware('auth:sanctum'); // Запись  отредактированных данных (только с токеном)
+
 Route::get('/posts', [PostController::class, 'getPosts']); // Получить все посты
 Route::post('/posts/create', [PostController::class, 'createPost'])->middleware('auth:sanctum');//Создать пост
 Route::get('/posts/{id}', [PostController::class, 'getPostData']);
