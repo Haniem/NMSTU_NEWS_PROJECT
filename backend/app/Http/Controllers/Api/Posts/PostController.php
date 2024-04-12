@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Api\Posts;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -28,8 +26,6 @@ class PostController extends Controller
             'type_id' => 'required'
         ]);
 
-
-
         if ($validator->fails()) {
             return response()->json([
                 'message' => 'Validations fails',
@@ -49,10 +45,12 @@ class PostController extends Controller
             'message' => 'Validations succesfull',
             'data' => $post
         ], 200);
-
-
+    }
+    public function getPostData($id)
+    {
+        $post = Post::find($id);
+        return response()->json([
+            'post' => $post
+        ], 200);
     }
 }
-
-
-
