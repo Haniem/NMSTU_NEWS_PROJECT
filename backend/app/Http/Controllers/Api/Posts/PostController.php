@@ -46,9 +46,9 @@ class PostController extends Controller
             'data' => $post
         ], 200);
     }
-    public function getPostData($id)
+    public function getPostData(Request $request)
     {
-        $post = Post::find($id);
+        $post = Post::where('id', post_id)->first();
         return response()->json([
             'post' => $post
         ], 200);

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Like;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -19,9 +20,7 @@ class UserController extends Controller
             'username' => 'alpha:ascii|required|unique:users',
             'email' => 'required|unique:users|email',
             'specialization_id' => 'required',
-            'position_id' => 'required',
-            'password' => 'bail|required',
-            'password_confirmation' => 'required|same:password'
+            'position_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -37,43 +36,98 @@ class UserController extends Controller
             'username' => $request->username,
             'email' => $request->email,
             'specialization_id' => $request->specialization_id,
-            'position_id' => $request->position_id,
-            'role_id' => $request->role_id,
-            'password' => Hash::make($request->password),
+            'position_id' => $request->position_id
         ]);
         return response()->json([
             'message' => 'The data has been edited',
             'data' => $user
         ], 200);
     }
-  
+
     public function getUserLikedPosts(Request $request)
     {
-        $user_id = $request->user()->id;
-        $likes = Like::with('post')->where('user_id', $user_id)->get();
-
-        return response()->json([
-            'user_id' => $request->user()->id,
-           'message' => $likes
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|integer'
         ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Validations fails',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        $likes = Like::with('post')->where('user_id', $request->user_id)->get();
+
+        if(count($likes)){
+            return response()->json([
+                'user_id' => $request->user_id,
+                'message' => $likes
+            ], 200);
+        } else {
+            return response()->json([
+                'user_id' => $request->user_id,
+                'message' => 'This user doesnt like any post'
+            ]);
+        }
+
     }
 
     public function getProfileData(Request $request)
     {
-        $user = User::all()->where($request->user()->id)->first();
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|integer'
+        ]);
 
-        return response()->json([
-            'message' => 'Data fetch success fully',
-            'data' => $user
-        ], 200);
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Validations fails',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        $user = User::all()->where('id', $request->user_id)->first();
+
+        if ($user) {
+            return response()->json([
+                'message' => 'Data fetch success fully',
+                'user' => $user
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Data doesnt fetched succesfully ',
+                'user' => $user
+            ], 402);
+        }
+
     }
 
     public function getUserPosts(Request $request){
-        $posts = Post::all()->where('user_id',$request->user()->id);
 
-        return response()->json([
-            'message' => 'Data fetch success fully',
-            'data' => $posts
-        ], 200);
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|integer'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Validations fails',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        $posts = Post::all()->where('user_id',$request->user_id);
+
+        if(count($posts)){
+            return response()->json([
+                'message' => 'Data fetch success fully',
+                'data' => $posts
+            ], 200);
+        } else {
+            return response()->json([
+                'user_id' => $request->user_id,
+                'message' => 'This user doesnt have any post'
+            ]);
+        }
+
     }
 }
