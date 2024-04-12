@@ -26,22 +26,22 @@ Route::get('/profile/getProfileData',[UserController::class, 'getProfileData']);
 Route::get('/profile/getUserPosts',[UserController::class, 'getUserPosts']); //Выдача постов пользователяи (только с токеном)
 Route::get('/profile/getUserLikedPosts',[UserController::class, 'getUserLikedPosts']); //Выдача пролайканных постов (только с токеном)
 //to do
-Route::patch('/profile/updateUserPassword',[UserController::class, 'updateUserPassword'])->middleware('auth:sanctum'); //Выдача пролайканных постов (только с токеном)
+Route::patch('/profile/updateUserPassword',[UserController::class, 'updateUserPassword'])->middleware('auth:sanctum'); //Обновить пароль пользователя (только с токеном)
 
 Route::get('/posts/getAllPosts', [PostController::class, 'getPosts']); // Получить все посты
-Route::post('/posts/createPost', [PostController::class, 'createPost'])->middleware('auth:sanctum');//Создать пост
+Route::post('/posts/createPost', [PostController::class, 'createPost'])->middleware('auth:sanctum');//Создать пост(только с токеном)
 //to do
-Route::patch('/posts/updatePost', [PostController::class, 'updatePost']);
-Route::delete('/posts/deletePost', [PostController::class, 'deletePost']);
+Route::patch('/posts/updatePost', [PostController::class, 'updatePost'])->middleware('auth:sanctum'); //Обновить пост(только с токеном)
+Route::delete('/posts/deletePost', [PostController::class, 'deletePost'])->middleware('auth:sanctum'); //Удалить пост(только с токеном)
 
 Route::get('/comments/getComments', [CommentController::class, 'getComments']); // Получить все коментарии к конкретному посту
 //to do
-Route::get('/comments/getComment', [CommentController::class, 'getComment'])->middleware('auth:sanctum');; // Обновить комментарий
-Route::post('/comments/createComment', [CommentController::class, 'createComment'])->middleware('auth:sanctum');; // Обновить комментарий
-Route::patch('/comments/updateComment', [CommentController::class, 'updateComment'])->middleware('auth:sanctum');; // Обновить комментарий
-Route::delete('/comments/deleteComment', [CommentController::class, 'deleteComment'])->middleware('auth:sanctum');; // Удалить комментарий
+Route::get('/comments/getComment', [CommentController::class, 'getComment'])->middleware('auth:sanctum');; // Получить конкретный комментарий(только с токеном)
+Route::post('/comments/createComment', [CommentController::class, 'createComment'])->middleware('auth:sanctum');; // Создать комментарий(только с токеном)
+Route::patch('/comments/updateComment', [CommentController::class, 'updateComment'])->middleware('auth:sanctum');; // Обновить комментарий(только с токеном)
+Route::delete('/comments/deleteComment', [CommentController::class, 'deleteComment'])->middleware('auth:sanctum');; // Удалить комментарий(только с токеном)
 
 Route::get('/likes/getPostLikes', [LikeController::class, 'getPostLikes']); // Получить все лайки на посте
 Route::post('/likes/addLikeToPost', [LikeController::class, 'addPostLikes'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
 //to do
-Route::delete('/likes/deleteLikeFromPost', [LikeController::class, 'deletePostLikes'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
+Route::delete('/likes/deleteLikeFromPost', [LikeController::class, 'deletePostLikes'])->middleware('auth:sanctum'); // Удалить лайк (только с токеном)
