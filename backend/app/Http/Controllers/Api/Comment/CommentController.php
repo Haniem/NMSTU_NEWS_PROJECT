@@ -28,9 +28,31 @@ class CommentController extends Controller
             "message" => "Data fetched succesfully",
             "comments" => $comments], 200);
     }
+    public function createComment(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'comment_text' => 'required',
+            'post_id' => 'required'
+        ]);
 
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Validations fails',
+                'errors' => $validator->errors()
+            ], 422);
+        }
 
+        $comment = Comment::create([
+            'comment_text' => $request->comment_text,
+            'user_id' => $request->user()->id,
+            'post_id' => $request->post()->id
+        ]);
 
+        return response()->json([
+            'message' => 'Validations succesfull',
+            'data' => $comment
+        ], 200);
+    }
     public function updateComment(Request $request)
     {
         $validator = Validator::make($request->all(), [
