@@ -45,7 +45,7 @@ class CommentController extends Controller
         $comment = Comment::create([
             'comment_text' => $request->comment_text,
             'user_id' => $request->user()->id,
-            'post_id' => $request->post()->id
+            'post_id' => $request->post_id
         ]);
 
         return response()->json([
@@ -69,10 +69,21 @@ class CommentController extends Controller
         $comment=Comment::where('id',$request->comment_id)->update([
             'comment_text'=>$request->comment_text
         ]);
-        return response()->json([
-            'message' => 'The comment has been edited',
-            'data' => $comment
-        ], 200);
+
+        $comment=Comment::where('id',$request->comment_id)->get();
+
+        if ($comment)
+        {
+            return response()->json([
+                'message' => 'The comment has been edited',
+                "data"=>$comment],200);
+        } else
+        {
+            return response()->json([
+                "message" => "No comment!"
+            ], 422);
+        }
+
     }
 
 }
