@@ -48,27 +48,37 @@ class PostController extends Controller
     }
     public function getPostData(Request $request)
     {
-        $post = Post::where('id', post_id)->first();
+        $post = Post::where('id', $request->post_id)->first();
         return response()->json([
             'post' => $post
         ], 200);
     }
+
     public function deletePost(Request $request)
     {
         $post = Post::find($request->post_id);
-        if($post)
-        {
-            $post->delete();
+
+        if($post->user_id == $request->user()->id){
+            if($post)
+            {
+                $post->delete();
+                return response()->json([
+                    "message"=>"Post was deleted!",
+                    'data' => $post
+                ],200);
+            }
+            else
+            {
+                return response()->json([
+                    "message"=>"No such post!"
+                ],422);
+            }
+        } else {
             return response()->json([
-                "message"=>"Post was deleted!"
-            ],200);
-        }
-        else
-        {
-            return response()->json([
-                "message"=>"No such post!"
+                "message"=>"You cant delete this post!"
             ],422);
         }
+
     }
 
 }
