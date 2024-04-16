@@ -31,15 +31,15 @@ Route::patch('/profile/updateUserPassword',[UserController::class, 'updateUserPa
 Route::get('/posts/getAllPosts', [PostController::class, 'getPosts']); // Получить все посты
 Route::post('/posts/createPost', [PostController::class, 'createPost'])->middleware('auth:sanctum');//Создать пост
 //to do
-Route::patch('/posts/updatePost', [PostController::class, 'updatePost']);
+Route::patch('/posts/updatePost', [PostController::class, 'updatePost'])->middleware('auth:sanctum');
 Route::delete('/posts/deletePost', [PostController::class, 'deletePost'])->middleware('auth:sanctum'); //Удалить пост
 
 Route::get('/comments/getComments', [CommentController::class, 'getComments']); // Получить все коментарии к конкретному посту
 //to do
-Route::get('/comments/getComment', [CommentController::class, 'getComment'])->middleware('auth:sanctum');; // Обновить комментарий
-Route::post('/comments/createComment', [CommentController::class, 'createComment'])->middleware('auth:sanctum');; // Обновить комментарий
-Route::patch('/comments/updateComment', [CommentController::class, 'updateComment'])->middleware('auth:sanctum');; // Обновить комментарий
-Route::delete('/comments/deleteComment', [CommentController::class, 'deleteComment'])->middleware('auth:sanctum');; // Удалить комментарий
+Route::get('/comments/getComment', [CommentController::class, 'getComment']); // Обновить комментарий
+Route::post('/comments/createComment', [CommentController::class, 'createComment'])->middleware('auth:sanctum'); // Обновить комментарий
+Route::patch('/comments/updateComment', [CommentController::class, 'updateComment'])->middleware('auth:sanctum'); // Обновить комментарий
+Route::delete('/comments/deleteComment', [CommentController::class, 'deleteComment'])->middleware('auth:sanctum'); // Удалить комментарий
 
 Route::get('/likes/getPostLikes', [LikeController::class, 'getPostLikes']); // Получить все лайки на посте
 Route::post('/likes/addLikeToPost', [LikeController::class, 'addPostLikes'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
