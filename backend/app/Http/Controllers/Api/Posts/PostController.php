@@ -53,4 +53,22 @@ class PostController extends Controller
             'post' => $post
         ], 200);
     }
+    public function deletePost(Request $request)
+    {
+        $post = Post::find($request->post_id);
+        if($post)
+        {
+            $post->delete();
+            return response()->json([
+                "message"=>"Post was deleted!"
+            ],200);
+        }
+        else
+        {
+            return response()->json([
+                "message"=>"No such post!"
+            ],422);
+        }
+    }
+
 }
