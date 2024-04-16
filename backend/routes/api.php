@@ -32,7 +32,7 @@ Route::get('/posts/getAllPosts', [PostController::class, 'getPosts']); // Пол
 Route::post('/posts/createPost', [PostController::class, 'createPost'])->middleware('auth:sanctum');//Создать пост
 //to do
 Route::patch('/posts/updatePost', [PostController::class, 'updatePost']);
-Route::delete('/posts/deletePost', [PostController::class, 'deletePost']);
+Route::delete('/posts/deletePost', [PostController::class, 'deletePost'])->middleware('auth:sanctum'); //Удалить пост
 
 Route::get('/comments/getComments', [CommentController::class, 'getComments']); // Получить все коментарии к конкретному посту
 //to do
