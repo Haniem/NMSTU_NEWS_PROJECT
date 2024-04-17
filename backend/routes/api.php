@@ -37,6 +37,7 @@ Route::delete('/posts/deletePost', [PostController::class, 'deletePost'])->middl
 Route::get('/comments/getComments', [CommentController::class, 'getComments']); // Получить все коментарии к конкретному посту
 //to do
 Route::get('/comments/getComment', [CommentController::class, 'getComment']); // Обновить комментарий
+Route::get('/comments/getComment', [CommentController::class, 'getComment'])->middleware('auth:sanctum');; // Получить конкретный комментарий(только с токеном)
 Route::post('/comments/createComment', [CommentController::class, 'createComment'])->middleware('auth:sanctum'); // Обновить комментарий
 Route::patch('/comments/updateComment', [CommentController::class, 'updateComment'])->middleware('auth:sanctum'); // Обновить комментарий
 Route::delete('/comments/deleteComment', [CommentController::class, 'deleteComment'])->middleware('auth:sanctum'); // Удалить комментарий

@@ -85,6 +85,33 @@ class CommentController extends Controller
         }
 
     }
+    public function getComment(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'comment_id' => 'required|integer'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Validations fails',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        $comment=Comment::where('id',$request->comment_id)->get();
+
+        if ($comment)
+        {
+            return response()->json([
+                'message' => 'The comment has been edited',
+                "data"=>$comment],200);
+        } else
+        {
+            return response()->json([
+                "message" => "No comment!"
+            ], 422);
+        }
+    }
 
 }
 
