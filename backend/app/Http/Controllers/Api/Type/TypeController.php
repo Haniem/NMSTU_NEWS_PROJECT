@@ -12,6 +12,8 @@ class TypeController extends Controller
     public function getTypes(){
         $types = Type::all();
         return response()->json([
-            "types"=>$types],200);
+            'message' => 'Разделы постов успешно получены.',
+            "types"=>$types
+        ],200);
     }
 }

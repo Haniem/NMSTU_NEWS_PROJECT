@@ -18,7 +18,7 @@ class AuthController extends Controller
 
         if($validator->fails()){
             return response()->json([
-                'message' => 'Validations fails',
+                'message' => 'Неправильно введены данные',
                 'errors' => $validator->errors()
             ], 422);
         }
@@ -30,18 +30,18 @@ class AuthController extends Controller
                 $token = $user->createToken('auto-token')->plainTextToken;
 
                 return response()->json([
-                    'message' => 'Incorrect Successfull',
+                    'message' => 'Вы успешно авторизированы.',
                     'token' => $token,
                     'data' => $user
                 ], 200);
             }else {
                 return response()->json([
-                    'message' => 'Incorrect credentials'
+                    'message' => 'Неправильно введены данные для авторизации.'
                 ], 400);
             }
         } else {
             return response()->json([
-                'message' => 'Incorrect credentials'
+                'message' => 'Пользователь не найдет. Зарегестрируйтесь.'
             ], 400);
 
         }
@@ -62,7 +62,7 @@ class AuthController extends Controller
 
         if($validator->fails()){
             return response()->json([
-                'message' => 'Validations fails',
+                'message' => 'Неправильно введены данные',
                 'errors' => $validator->errors()
             ], 422);
         }
@@ -80,7 +80,7 @@ class AuthController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'Validations succesfull',
+            'message' => 'Вы успешно зарегестрировались.',
             'data' => $user
         ], 200);
     }
@@ -88,7 +88,7 @@ class AuthController extends Controller
     public function logout(Request $request){
         $request->user()->currentAccessToken()->delete();
         return response()->json([
-            'message'=>'User successfully logged out',
+            'message'=>'Вы успешно вышли из аккаунта',
         ],200);
     }
 }
