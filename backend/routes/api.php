@@ -25,17 +25,15 @@ Route::patch('/profile/updateUserData',[UserController::class, 'updateUserData']
 Route::get('/profile/getProfileData',[UserController::class, 'getProfileData']); //Выдача инфомрации о пользователе (только с токеном)
 Route::get('/profile/getUserPosts',[UserController::class, 'getUserPosts']); //Выдача постов пользователяи (только с токеном)
 Route::get('/profile/getUserLikedPosts',[UserController::class, 'getUserLikedPosts']); //Выдача пролайканных постов (только с токеном)
-//to do
 Route::patch('/profile/updateUserPassword',[UserController::class, 'updateUserPassword'])->middleware('auth:sanctum'); //Выдача пролайканных постов (только с токеном)
 
 Route::get('/posts/getAllPosts', [PostController::class, 'getPosts']); // Получить все посты
+Route::get('/posts/getPost', [PostController::class, 'getPostData']); // Получить информацию о посте
 Route::post('/posts/createPost', [PostController::class, 'createPost'])->middleware('auth:sanctum');//Создать пост
-//to do
-Route::patch('/posts/updatePost', [PostController::class, 'updatePost'])->middleware('auth:sanctum');
 Route::delete('/posts/deletePost', [PostController::class, 'deletePost'])->middleware('auth:sanctum'); //Удалить пост
-
+Route::patch('/posts/updatePost', [PostController::class, 'updatePost'])->middleware('auth:sanctum'); //Обновить пост
 Route::get('/comments/getComments', [CommentController::class, 'getComments']); // Получить все коментарии к конкретному посту
-//to do
+
 Route::get('/comments/getComment', [CommentController::class, 'getComment']); // Обновить комментарий
 Route::post('/comments/createComment', [CommentController::class, 'createComment'])->middleware('auth:sanctum'); // Обновить комментарий
 Route::patch('/comments/updateComment', [CommentController::class, 'updateComment'])->middleware('auth:sanctum'); // Обновить комментарий
@@ -44,4 +42,4 @@ Route::delete('/comments/deleteComment', [CommentController::class, 'deleteComme
 Route::get('/likes/getPostLikes', [LikeController::class, 'getPostLikes']); // Получить все лайки на посте
 Route::post('/likes/addLikeToPost', [LikeController::class, 'addPostLikes'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
 //to do
-Route::delete('/likes/deleteLikeFromPost', [LikeController::class, 'deletePostLikes'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
+Route::delete('/likes/deletePostLike', [LikeController::class, 'deletePostLike'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
