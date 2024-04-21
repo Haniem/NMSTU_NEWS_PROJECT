@@ -41,7 +41,7 @@ class AuthController extends Controller
             }
         } else {
             return response()->json([
-                'message' => 'Пользователь не найдет. Зарегестрируйтесь.'
+                'message' => 'Пользователь не найден. Зарегистрируйтесь.'
             ], 400);
 
         }
