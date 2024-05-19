@@ -19,7 +19,14 @@ class CommentController extends Controller
                 'errors' => $validator->errors()
             ], 422);
         }
-        $comments = Comment::all()->where("post_id", $request->post_id);
+
+        $validSortFields = ['updated_at', 'comment_text'];
+        $validSortOrders = ['asc', 'desc'];
+
+        $sort_by = in_array($request->query('sort_by'), $validSortFields) ? $request->query('sort_by') : 'updated_at';
+        $sort_order = in_array($request->query('sort_order'), $validSortOrders) ? $request->query('sort_order') : 'asc';
+
+        $comments = Comment::where("post_id", $request->post_id)->orderBy($sort_by, $sort_order)->get();
 
         if (!$comments->isEmpty()) {
             return response()->json([

@@ -54,7 +54,13 @@ class UserController extends Controller
             ], 422);
         }
 
-        $likes = Like::with('post')->where('user_id', $request->user_id)->get();
+        $validSortFields = ['updated_at'];
+        $validSortOrders = ['asc', 'desc'];
+
+        $sort_by = in_array($request->query('sort_by'), $validSortFields) ? $request->query('sort_by') : 'updated_at';
+        $sort_order = in_array($request->query('sort_order'), $validSortOrders) ? $request->query('sort_order') : 'asc';
+
+        $likes = Like::with('post')->where('user_id', $request->user_id)->orderBy($sort_by, $sort_order)->get();
         if($likes){
             return response()->json([
                 'message' => 'Понравившиеся посты пользователя успешно получены.',
@@ -105,7 +111,13 @@ class UserController extends Controller
             ], 422);
         }
 
-        $posts = Post::all()->where('user_id',$request->user_id);
+        $validSortFields = ['id', 'post_title', 'created_at', 'updated_at'];
+        $validSortOrders = ['asc', 'desc'];
+
+        $sort_by = in_array($request->query('sort_by'), $validSortFields) ? $request->query('sort_by') : 'updated_at';
+        $sort_order = in_array($request->query('sort_order'), $validSortOrders) ? $request->query('sort_order') : 'asc';
+
+        $posts = Post::where('user_id',$request->user_id)->orderBy($sort_by, $sort_order)->get();
         if($posts){
             return response()->json([
                 'message' => 'Посты пользователя успешно получены.',

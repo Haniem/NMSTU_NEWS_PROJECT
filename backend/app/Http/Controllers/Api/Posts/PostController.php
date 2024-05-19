@@ -10,8 +10,14 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-    public function getPosts(){
-        $posts = Post::all();
+    public function getPosts(Request $request){
+        $validSortFields = ['post_title', 'created_at', 'updated_at'];
+        $validSortOrders = ['asc', 'desc'];
+
+        $sort_by = in_array($request->query('sort_by'), $validSortFields) ? $request->query('sort_by') : 'updated_at';
+        $sort_order = in_array($request->query('sort_order'), $validSortOrders) ? $request->query('sort_order') : 'asc';
+
+        $posts = Post::orderBy($sort_by, $sort_order)->get();
         return response()->json([
             "message" => "Посты успешно получены.",
             "posts"=>$posts
