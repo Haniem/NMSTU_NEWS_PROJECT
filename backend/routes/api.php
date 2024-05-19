@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\User\UserPhotoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
@@ -32,8 +33,8 @@ Route::get('/posts/getPost', [PostController::class, 'getPostData']); // Пол�
 Route::post('/posts/createPost', [PostController::class, 'createPost'])->middleware('auth:sanctum');//Создать пост
 Route::delete('/posts/deletePost', [PostController::class, 'deletePost'])->middleware('auth:sanctum'); //Удалить пост
 Route::patch('/posts/updatePost', [PostController::class, 'updatePost'])->middleware('auth:sanctum'); //Обновить пост
-Route::get('/comments/getComments', [CommentController::class, 'getComments']); // Получить все коментарии к конкретному посту
 
+Route::get('/comments/getComments', [CommentController::class, 'getComments']); // Получить все коментарии к конкретному посту
 Route::get('/comments/getComment', [CommentController::class, 'getComment']); // Обновить комментарий
 Route::post('/comments/createComment', [CommentController::class, 'createComment'])->middleware('auth:sanctum'); // Обновить комментарий
 Route::patch('/comments/updateComment', [CommentController::class, 'updateComment'])->middleware('auth:sanctum'); // Обновить комментарий
@@ -41,5 +42,17 @@ Route::delete('/comments/deleteComment', [CommentController::class, 'deleteComme
 
 Route::get('/likes/getPostLikes', [LikeController::class, 'getPostLikes']); // Получить все лайки на посте
 Route::post('/likes/addLikeToPost', [LikeController::class, 'addPostLikes'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
-//to do
 Route::delete('/likes/deletePostLike', [LikeController::class, 'deletePostLike'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
+// Заготовка для получения кол-ва лайков
+//Route::get('/likes/getPostLikesCount', [LikeController::class, 'getPostLikesCount']); // Получить все лайки на посте
+
+// Routes for photos
+// Route::get('/userPhotos/getUserPhoto', [UserPhotoController::class, 'getUserPhoto']);
+// Route::post('/userPhotos/createUserPhoto', [UserPhotoController::class, 'createUserPhoto'])->middleware('auth:sanctum');
+// Route::patch('/userPhotos/updateUserPhoto', [UserPhotoController::class, 'updateUserPhoto'])->middleware('auth:sanctum');
+// Route::delete('userPhotos/deleteUserPhoto', [UserPhotoController::class, 'deleteUserPhoto'])->middleware('auth:sanctum');
+
+// Route::get('/postPhotos/getPostPhoto', [PostPhotoController::class, 'getPostPhoto']);
+// Route::post('/postPhotos/createPostPhoto', [PostPhotoController::class, 'createPostPhoto'])->middleware('auth:sanctum');
+// Route::patch('/postPhotos/updatePostPhoto', [PostPhotoController::class, 'updatePostPhoto'])->middleware('auth:sanctum');
+// Route::delete('postPhotos/deletePostPhoto', [PostPhotoController::class, 'deletePostPhoto'])->middleware('auth:sanctum');
