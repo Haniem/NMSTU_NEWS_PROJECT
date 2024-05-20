@@ -26,7 +26,8 @@ class CommentController extends Controller
         $sort_by = in_array($request->query('sort_by'), $validSortFields) ? $request->query('sort_by') : 'updated_at';
         $sort_order = in_array($request->query('sort_order'), $validSortOrders) ? $request->query('sort_order') : 'asc';
 
-        $comments = Comment::where("post_id", $request->post_id)->orderBy($sort_by, $sort_order)->get();
+        $perPage = $request->get('per_page', 20);
+        $comments = Comment::where("post_id", $request->post_id)->orderBy($sort_by, $sort_order)->paginate($perPage);
 
         if (!$comments->isEmpty()) {
             return response()->json([
