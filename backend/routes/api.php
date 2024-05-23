@@ -47,10 +47,10 @@ Route::delete('/likes/deletePostLike', [LikeController::class, 'deletePostLike']
 //Route::get('/likes/getPostLikesCount', [LikeController::class, 'getPostLikesCount']); // Получить все лайки на посте
 
 // Routes for photos
-// Route::get('/userPhotos/getUserPhoto', [UserPhotoController::class, 'getUserPhoto']);
-// Route::post('/userPhotos/createUserPhoto', [UserPhotoController::class, 'createUserPhoto'])->middleware('auth:sanctum');
-// Route::patch('/userPhotos/updateUserPhoto', [UserPhotoController::class, 'updateUserPhoto'])->middleware('auth:sanctum');
-// Route::delete('userPhotos/deleteUserPhoto', [UserPhotoController::class, 'deleteUserPhoto'])->middleware('auth:sanctum');
+Route::get('/userPhotos/getUserPhoto', [UserPhotoController::class, 'getUserPhoto']);
+Route::post('/userPhotos/createUserPhoto', [UserPhotoController::class, 'createUserPhoto'])->middleware('auth:sanctum');
+Route::patch('/userPhotos/updateUserPhoto', [UserPhotoController::class, 'updateUserPhoto'])->middleware('auth:sanctum');
+Route::delete('userPhotos/deleteUserPhoto', [UserPhotoController::class, 'deleteUserPhoto'])->middleware('auth:sanctum');
 
 // Route::get('/postPhotos/getPostPhoto', [PostPhotoController::class, 'getPostPhoto']);
 // Route::post('/postPhotos/createPostPhoto', [PostPhotoController::class, 'createPostPhoto'])->middleware('auth:sanctum');
