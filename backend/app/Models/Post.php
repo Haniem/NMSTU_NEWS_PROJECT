@@ -18,7 +18,9 @@ class Post extends Model
         'post_title',
         'post_text',
         'user_id',
-        'type_id'
+        'type_id',
+        'image_url',
+        'image_public_id'
     ];
 
     public function likes() : HasMany

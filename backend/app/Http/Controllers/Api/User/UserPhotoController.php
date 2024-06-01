@@ -7,17 +7,46 @@ use App\Models\User;
 use App\Models\UserPhoto;
 use Illuminate\Http\Request;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use GuzzleHttp\Client;
 class UserPhotoController extends Controller
 
 {
     public function createUserPhoto(Request $request){
-//        $cloudinaryImage = $request->file('user_photo')->storeOnClaudinary();
-        $uploadedFileUrl = Cloudinary::upload($request->file('user_photo')->getRealPath())->getSecurePath();
-//        $url = $uploadedFileUrl->getSecurePath();
-//        $publicId = $uploadedFileUrl->getPublicId();
+        
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $client = new Client([
+            'base_uri' => 'https://api.cloudinary.com/v1_1/your_cloud_name/',
+            'verify' => false, // Игнорирование проверки SSL
+        ]);
+
+        $response = $client->post('image/upload', [
+            'multipart' => [
+                [
+                    'name'     => 'file',
+                    'contents' => fopen($request->file('image')->getRealPath(), 'r')
+                ],
+                [
+                    'name'     => 'upload_preset',
+                    'contents' => 'your_upload_preset'
+                ],
+                [
+                    'name'     => 'api_key',
+                    'contents' => env('CLOUDINARY_API_KEY')
+                ],
+                [
+                    'name'     => 'api_secret',
+                    'contents' => env('CLOUDINARY_API_SECRET')
+                ],
+            ],
+        ]);
+
+        $body = json_decode((string) $response->getBody(), true);
 
         return response()->json([
-            'url' => $uploadedFileUrl,
+            'url' => $body['secure_url']
         ]);
 
         $userPhoto = UserPhoto::where('user_id', $request->user()->id)->first();
