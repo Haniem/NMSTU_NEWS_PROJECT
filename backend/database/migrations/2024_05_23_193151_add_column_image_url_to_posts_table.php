@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('image_url');
+            $table->string('image_url')->default('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSExqNysPV3DAISx0M6bwP0V7-pAOIjw1eJsw&s')->nullable();
         });
     }
 
