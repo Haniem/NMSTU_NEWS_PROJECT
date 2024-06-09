@@ -8,6 +8,10 @@ use App\Http\Controllers\Api\Posts\PostController;
 use App\Http\Controllers\Api\User\UserController;
 use App\Http\Controllers\Api\Comment\CommentController;
 use App\Http\Controllers\Api\Likes\LikeController;
+use App\Http\Controllers\Api\Faculties\FacultyController;
+use App\Http\Controllers\Api\Posts\PostStateController;
+use App\Http\Controllers\Api\User\UserStateController;
+use App\Http\Controllers\Api\Specialization\SpecializationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -69,5 +73,5 @@ Route::patch('/user/bannedState', [UserStateController::class, 'bannedState'])->
 Route::post('/specialization/addSpecialization', [SpecializationController::class, 'addSpecialization'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
 Route::delete('/specialization/deleteSpecialization', [SpecializationController::class, 'deleteSpecialization'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
 
-Route::patch('/post/moderatedState', [UserStateController::class, 'moderatedState'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
-Route::patch('/user/bannedState', [UserStateController::class, 'bannedState'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
+Route::patch('/post/moderatedState', [PostStateController::class, 'moderatedState'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
+Route::patch('/post/bannedState', [PostStateController::class, 'bannedState'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
