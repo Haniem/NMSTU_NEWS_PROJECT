@@ -64,8 +64,10 @@ Route::post('/position/createPosition', [CommentController::class, 'createPositi
 Route::delete('/position/deletePosition', [CommentController::class, 'deletePosition'])->middleware('auth:sanctum'); // Обновить комментарий
 
 Route::patch('/user/activeState', [UserStateController::class, 'activeState'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
-Route::patch('/user/bannedState', [UserStateController::class, 'bannedState'])->middleware('auth:sanctum') // Поставить лайк (только с токеном)
+Route::patch('/user/bannedState', [UserStateController::class, 'bannedState'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
 
 Route::post('/specialization/addSpecialization', [SpecializationController::class, 'addSpecialization'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
 Route::delete('/specialization/deleteSpecialization', [SpecializationController::class, 'deleteSpecialization'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
 
+Route::patch('/post/moderatedState', [UserStateController::class, 'moderatedState'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
+Route::patch('/user/bannedState', [UserStateController::class, 'bannedState'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
