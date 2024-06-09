@@ -56,3 +56,6 @@ Route::delete('userPhotos/deleteUserPhoto', [UserPhotoController::class, 'delete
 // Route::post('/postPhotos/createPostPhoto', [PostPhotoController::class, 'createPostPhoto'])->middleware('auth:sanctum');
 // Route::patch('/postPhotos/updatePostPhoto', [PostPhotoController::class, 'updatePostPhoto'])->middleware('auth:sanctum');
 // Route::delete('postPhotos/deletePostPhoto', [PostPhotoController::class, 'deletePostPhoto'])->middleware('auth:sanctum');
+
+Route::post('/faculty/createFaculty', [FacultyController::class, 'createFaculty'])->middleware('auth:sanctum'); // Обновить комментарий
+Route::delete('/faculty/deleteFaculty', [FacultyController::class, 'deleteFaculty'])->middleware('auth:sanctum'); // Обновить комментарий
