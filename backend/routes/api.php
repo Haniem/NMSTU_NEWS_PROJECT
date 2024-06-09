@@ -62,3 +62,6 @@ Route::delete('/faculty/deleteFaculty', [FacultyController::class, 'deleteFacult
 
 Route::post('/position/createPosition', [CommentController::class, 'createPosition'])->middleware('auth:sanctum'); // Обновить комментарий
 Route::delete('/position/deletePosition', [CommentController::class, 'deletePosition'])->middleware('auth:sanctum'); // Обновить комментарий
+
+Route::post('/specialization/addSpecialization', [SpecializationController::class, 'addSpecialization'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
+Route::delete('/specialization/deleteSpecialization', [SpecializationController::class, 'deleteSpecialization'])->middleware('auth:sanctum'); // Поставить лайк (только с токеном)
